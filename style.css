@@ -19,13 +19,11 @@ body {
   background-color: black;
   color: white;
   border: 2px solid black;
-  border-radius: 10px;
 }
 
 /* Screen */
 .screen {
   font-family: "Courier New", Courier, monospace;
-  font-size: 30px;
   text-align: right;
   padding: 20px 5px;
   color: white;
@@ -33,6 +31,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.expression {
+  font-size: 24px;
+  color: lightgray;
+}
+
+.result {
+  font-size: 40px;
+  color: white;
 }
 
 /* Button Styles */
@@ -52,7 +60,7 @@ body {
 }
 
 .calc-button.triple {
-  width: 74.8%;
+  width: 49.7%;
 }
 
 /* Button Hover & Active States */
@@ -89,12 +97,20 @@ body {
   margin-bottom: 0;
 }
 
-.expression {
+.clear {
   font-size: 32px;
-  color: #ccc;
+  background-color: #d8d9db;
+  color: #df974c;
+  font-weight: bold;
 }
 
-.result {
-  font-size: 40px;
-  color: #fff;
+p {
+  margin: 2%;
+  text-align: center;
+  color: #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+span {
+  color: #df974c;
 }

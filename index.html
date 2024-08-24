@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Calculator</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./index.js" defer></script>
   </head>
 
   <body>
     <div class="calc">
+      <p>Click <span>Clear</span> after each result.</p>
       <output class="screen">
         <div class="expression">0</div>
         <div class="result"></div>
@@ -17,8 +17,9 @@
 
       <div class="calc-buttons">
         <div class="calc-button-row">
-          <button class="calc-button double">C</button>
+          <button class="calc-button clear">Clear</button>
           <button class="calc-button">←</button>
+          <button class="calc-button">%</button>
           <button class="calc-button">÷</button>
         </div>
         <div class="calc-button-row">
@@ -40,11 +41,14 @@
           <button class="calc-button">+</button>
         </div>
         <div class="calc-button-row">
-          <button class="calc-button triple">0</button>
+          <button class="calc-button">±</button>
+          <button class="calc-button">0</button>
+          <button class="calc-button">.</button>
           <button class="calc-button">=</button>
         </div>
       </div>
     </div>
-    <script src="./calculator.js"></script>
+
+    <script src="./index.js"></script>
   </body>
 </html>

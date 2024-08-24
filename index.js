@@ -2,11 +2,21 @@ let runningTotal = 0;
 let buffer = "0";
 let previousOperator = null;
 let operatorPressed = false;
+let resultDisplayed = false; // Track if the result was just displayed
 const expressionScreen = document.querySelector(".expression");
 const resultScreen = document.querySelector(".result");
 
 function buttonClick(value) {
-  isNaN(parseInt(value)) ? handleSymbol(value) : handleNumber(value);
+  if (resultDisplayed) {
+    resetCalculator(); // Clear display if result was shown
+  }
+
+  if (isNaN(parseInt(value)) && value !== ".") {
+    handleSymbol(value);
+  } else {
+    handleNumber(value);
+  }
+
   rerender();
 }
 
@@ -19,8 +29,14 @@ function handleNumber(value) {
   }
 }
 
+function handleDecimal() {
+  if (!buffer.includes(".")) {
+    buffer += ".";
+  }
+}
+
 function handleMath(operator) {
-  const intBuffer = parseInt(buffer);
+  const intBuffer = parseFloat(buffer);
   if (runningTotal === 0) {
     runningTotal = intBuffer;
   } else if (!operatorPressed) {
@@ -49,12 +65,25 @@ function flushOperation(intBuffer) {
 }
 
 function handleSymbol(symbol) {
+  if (resultDisplayed && symbol !== "C") {
+    resetCalculator(); // Clear display if result was shown and not resetting
+  }
+
   switch (symbol) {
     case "C":
       resetCalculator();
       break;
     case "=":
       calculateResult();
+      break;
+    case ".":
+      handleDecimal();
+      break;
+    case "%":
+      handlePercentage();
+      break;
+    case "±":
+      toggleNegative();
       break;
     case "←":
       handleBackspace();
@@ -68,22 +97,36 @@ function handleSymbol(symbol) {
   }
 }
 
+function handlePercentage() {
+  buffer = (parseFloat(buffer) / 100).toString();
+}
+
+function toggleNegative() {
+  if (buffer[0] === "-") {
+    buffer = buffer.slice(1);
+  } else {
+    buffer = "-" + buffer;
+  }
+}
+
 function resetCalculator() {
   buffer = "0";
   runningTotal = 0;
   previousOperator = null;
   operatorPressed = false;
+  resultDisplayed = false;
   resultScreen.innerText = "";
 }
 
 function calculateResult() {
   if (previousOperator === null || operatorPressed) return;
 
-  flushOperation(parseInt(buffer.split(" ").pop()));
+  flushOperation(parseFloat(buffer.split(" ").pop()));
   buffer += ` =`;
   resultScreen.innerText = runningTotal.toString();
   previousOperator = null;
   operatorPressed = false;
+  resultDisplayed = true; // Set flag when result is displayed
 }
 
 function handleBackspace() {
