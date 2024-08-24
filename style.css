@@ -1,0 +1,100 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Calculator Container */
+.calc {
+  width: 400px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+/* Screen */
+.screen {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 30px;
+  text-align: right;
+  padding: 20px 5px;
+  color: white;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Button Styles */
+.calc-button {
+  background-color: #d8d9db;
+  color: black;
+  height: 100px;
+  width: 24.5%;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calc-button.double {
+  width: 49.7%;
+}
+
+.calc-button.triple {
+  width: 74.8%;
+}
+
+/* Button Hover & Active States */
+.calc-button:hover {
+  background-color: #ebebeb;
+}
+
+.calc-button:active {
+  background-color: #bbbcbe;
+}
+
+/* Special Button: Equals */
+.calc-button:last-child {
+  background-color: #df974c;
+  color: white;
+}
+
+.calc-button:last-child:hover {
+  background-color: #dfb07e;
+}
+
+.calc-button:last-child:active {
+  background-color: #dd8d37;
+}
+
+/* Button Row */
+.calc-button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+
+.calc-button-row:last-child {
+  margin-bottom: 0;
+}
+
+.expression {
+  font-size: 32px;
+  color: #ccc;
+}
+
+.result {
+  font-size: 40px;
+  color: #fff;
+}
